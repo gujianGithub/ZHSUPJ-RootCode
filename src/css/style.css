@@ -1,0 +1,25 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    touch-action: none;
+}
+html,body{
+    height: 100%;
+}
+.itemMarginLeft{
+    margin-left: 0px !important;
+}
+.clickedColor{
+    color: #843C0C !important;
+}
+.unclickedColor{
+    color: #2F5597 !important;
+}
+.displayNone{
+    display: none;
+}
+/* 去除谷歌浏览器input黄色背景 */
+input:-webkit-autofill{ 
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;  
+}
+

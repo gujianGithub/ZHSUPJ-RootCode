@@ -1,0 +1,95 @@
+.indexCss1{
+    margin-left: 25px;
+    line-height: 55px;
+    color: white;
+}
+.indexCss2{
+    background-image: url("../image/headBackground.png");
+    background-size: 100% 100%;
+}
+.indexCss3{
+    text-align: center;
+    line-height: 55px;
+    color: white;
+}
+.indexCss4{
+    color: white;
+    text-align: right;
+    margin-right: 20px;
+    height: 100%;
+}
+.indexCss5{
+    flex-basis: 30px !important;
+    height: 30px;
+    flex-grow: 0 !important;
+    background-image: url(../image/clock.png);
+    background-size: 100% 100%;
+}
+.indexCss6{
+    text-align: center;
+    line-height: 55px;
+}
+.indexCss7{
+    height: 100%;
+    margin-right: 20px;
+    flex-grow: 0;
+}
+.indexCss8{
+    flex-basis: 30px !important;
+    height: 30px;
+    flex-grow: 0 !important;
+    background-image: url(../image/student.png);
+    background-size: 100% 100%;
+}
+.indexCss9{
+    height: 55px;
+    flex-grow: 0 !important;
+    background-color: white;
+    border-bottom: 1px solid #BFBFBF;
+}
+.indexCss10{
+    flex-basis: 30px !important;
+    height: 30px;
+    flex-grow: 0 !important;
+    background-image: url(../image/item.png);
+    background-size: 100% 100%;
+}
+.indexCss11{
+    height: 55px;
+    flex-grow: 0 !important;
+    background-color: white;
+}
+.indexCss12{
+    height: 55px;
+    flex-grow: 0 !important;
+    background-image: url("../image/functionImage.png");
+    background-size: 100% 100%;
+}
+.indexCss13{
+    flex-basis: 30px !important;
+    height: 30px;
+    flex-grow: 0 !important;
+    background-image: url("../image/typeWrite.png");
+    background-size: 100% 100%;
+}
+.indexCss14{
+    flex-basis: 30px !important;
+    height: 30px;
+    flex-grow: 0 !important;
+    background-image: url("../image/album.png");
+    background-size: 100% 100%;
+}
+.indexCss15{
+    flex-basis: 30px !important;
+    height: 30px;
+    flex-grow: 0 !important;
+    background-image: url("../image/photo.png");
+    background-size: 100% 100%;
+}
+.indexCss16{
+    flex-basis: 30px !important;
+    height: 30px;
+    flex-grow: 0 !important;
+    background-image: url("../image/voice.png");
+    background-size: 100% 100%;
+}

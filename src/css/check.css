@@ -1,0 +1,48 @@
+.checkCss1{
+    height: 45px;
+    flex-grow: 0 !important;
+    background-image: url("../image/headBackground.png");
+    background-size: 100% 100%;
+    color: white;
+}
+.checkCss2{
+    text-align: center;
+    line-height: 45px;
+    color: white;
+    margin-left: 0px !important;
+}
+.checkCss3{
+    flex-basis: 20px !important;
+    flex-grow: 0 !important;
+    margin-left: 0px !important;
+}
+.checkCss5{
+    background-color: #F2F2F2;
+    height: 100px;
+    flex-grow: 0 !important;
+    margin-left: 0px !important;
+}
+.checkCss6{
+    flex-grow: 0 !important;
+    margin-left: 0px !important;
+}
+.checkCss7{
+    flex-grow: 1 !important;
+    margin-left: 0px !important;
+}
+.checkCss9{
+    flex-grow: 0 !important;
+    flex-basis: 120px !important;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #2F5597;
+}
+.checkCss10{
+    flex-grow: 0 !important;
+    flex-basis: 70px !important;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #2F5597;
+}

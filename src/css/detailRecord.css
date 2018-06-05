@@ -1,0 +1,82 @@
+.detailRecordCss1{
+    height: 45px;
+    flex-grow: 0 !important;
+    background-image: url("../image/headBackground.png");
+    background-size: 100% 100%;
+    color: white;
+}
+.detailRecordCss2{
+    text-align: center;
+    line-height: 45px;
+    color: white;
+    margin-left: 0px !important;
+}
+.detailRecordCss3{
+    flex-basis: 20px !important;
+    flex-grow: 0 !important;
+    margin-left: 0px !important;
+}
+.detailRecordCss4{
+    height: 400px;
+    margin: 20px 20px auto 20px !important;
+    border-radius: 8px;
+    border: 1px solid #D9D9D9;
+    background-color: white;
+
+}
+.detailRecordCss5{
+    background-color: #EBEBEB;
+
+}
+.detailRecordCss6{
+    height: 45px;
+    flex-grow: 1 !important;
+    text-align: center;
+    line-height:45px;
+    word-break:break-all;
+}
+.detailRecordCss7{
+    height: 100%;
+    margin-right: 20px;
+    flex-grow: 0;
+}
+.detailRecordCss8{
+    height: 45px;
+    flex-grow: 0 !important;
+    border-bottom: 1px solid #BFBFBF;
+}
+.detailRecordCss9{
+    flex-basis: 30px !important;
+    height: 30px;
+    flex-grow: 0 !important;
+    background-image: url(../image/clock.png);
+    background-size: 100% 100%;
+}
+.detailRecordCss10{
+    flex-basis: 30px !important;
+    height: 30px;
+    flex-grow: 0 !important;
+    background-image: url(../image/student.png);
+    background-size: 100% 100%;
+}
+.detailRecordCss11{
+    border-bottom: 1px solid #BFBFBF;
+    flex-grow: 0 !important;
+    height: 80px;
+}
+.detailRecordCss12{
+    flex-basis: 30px !important;
+    height: 30px;
+    flex-grow: 0 !important;
+    background-image: url(../image/item.png);
+    background-size: 100% 100%;
+}
+.detailRecordCss13{
+    flex-grow: 0 !important;
+    flex-basis: 80px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+   
+
+}

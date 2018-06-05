@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- set `maximum-scale` for some compatibility issues -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    <!--<script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>-->
+    <meta charset="UTF-8">
+    <meta name="HandheldFriendly" content="true"/>
+	<meta name="MobileOptimized" content="320"/>
+    <title>Title</title>
+    <!--<script type="text/javascript">-->
+        <!--// if ('addEventListener' in document) {-->
+        <!--//     document.addEventListener('DOMContentLoaded', function () {-->
+        <!--//         FastClick.attach(document.body);-->
+        <!--//     }, false);-->
+        <!--// }-->
+        <!--// if (!window.Promise) {-->
+        <!--//     document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' + '/' + 'script>');-->
+        <!--// }-->
+   <!--</script>-->
+   <script>
+      var REQUEST_API = "http://10.41.137.55/mobileTerminal/Handlers/MobileTerminal/XTXZHandler.ashx";
+      var u = navigator.userAgent;
+      var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+      var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+   </script>
+    <!--<link rel="stylesheet" href="../src/css/style.css">-->
+</head>
+<body>
+<div id="index" style="height:100%"></div>
+<script src="bundle.js"></script>
+
+</body>
+</html>

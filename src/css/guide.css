@@ -1,0 +1,48 @@
+.css1{
+    background-image: url("../image/mainBackground.png");
+    background-size: 100% 100%;
+}
+.css2{
+ /*  height: 80px; */
+    text-align: center;
+    line-height: 80px;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+}
+.css3{
+    height: 30px;
+}
+.css4{
+   
+}
+.css5{
+    line-height: 30px;
+}
+.css6{
+    text-align: right;
+    line-height: 30px;
+    color: gray;
+    height: 30px;
+}
+.css7{
+    flex-grow:0;
+    height:70px;
+    width:70px;
+    background-size:100% 100%;
+}
+.css8{
+    flex-grow:0;
+    height:30px;
+    line-height:30px;
+}
+.css9{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    height:100%;
+}
+.css10{
+    flex-basis:35%;
+    height:120px;
+}
