@@ -238,6 +238,7 @@ export class IndexComponent extends React.Component{
                 })
             })
 
+            console.log(sessionStorage.getItem("voiceBase64"));
         let postData = "method=POST&interface=AssessPerformance/SaveAssessPerformance&data={\"stuInfo\":\""+stuInfo+"\",\"graKindSN\":\"" + graKindSN + "\",\"perSN\":\"" + perSN + "\",\"graSN\":\""+graSN+"\",\"terSN\":\""+terSN+"\",\"dapSN\":\""+dapSN+"\",\"txtData\":\""+txtData+"\",\"indCode\":\""+ indCode+"\",\"filePath\":\""+filePath+"\",\"yeaName\":\""+yeaName+"\",\"Token\":\""+Token+"\",\"schSN\":\""+schSN+"\",\"schName\":\""+schName+"\",\"teaSN\":\""+teaSN+"\",\"parentIndName\":\""+parentIndName+"\",\"parentIndCode\":\""+parentIndCode+"\",\"source\":\""+source+"\",\"RoleToken\":\""+RoleToken+"\",\"dapState\":\""+dapState+"\"}";
         fetch(REQUEST_API, {
             method: 'POST',
@@ -291,7 +292,7 @@ export class IndexComponent extends React.Component{
         this.setState({div:voiceRecords},()=>{
         })
     }
-    startRecord(){  //开始录音
+    startRecord(){//开始录音
         this.setState({displayStateTypeWritting:"none"});
         this.setState({displayStateAlbum:"none"});
         this.setState({displayStatePhoto:"none"});

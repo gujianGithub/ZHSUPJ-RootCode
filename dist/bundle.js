@@ -48401,7 +48401,6 @@ var CheckComponent = exports.CheckComponent = function (_React$Component) {
                     } }, { text: '修改', onPress: function onPress() {
                         sessionStorage.setItem("level3IndCode", _this4.state.level3IndCode); //保存考核项信息
                         sessionStorage.removeItem("alter");
-
                         var graKindSN = sessionStorage.getItem("getClassGraKindSN");
                         var perSN = sessionStorage.getItem("getClassPerSN");
                         var graSN = sessionStorage.getItem("getClassGraSN");
@@ -51719,6 +51718,7 @@ var IndexComponent = exports.IndexComponent = function (_React$Component) {
                     var RoleToken = sessionStorage.getItem("rolToken");
                     var source = "2";
                     var stuInfo = "";
+                    var dapState = "";
                     //分解学生信息
                     _jquery2.default.each(JSON.parse(sessionStorage.getItem("studentInfo")), function (index, object) {
                         stuInfo += object.ClaSn + "⊙" + object.ClaName + "⊙" + object.StuName + "⊙" + object.StuId + "⊙" + object.BasClaSn;
@@ -51748,7 +51748,7 @@ var IndexComponent = exports.IndexComponent = function (_React$Component) {
                         });
                     });
 
-                    var postData = "method=POST&interface=AssessPerformance/SaveAssessPerformance&data={\"stuInfo\":\"" + stuInfo + "\",\"graKindSN\":\"" + graKindSN + "\",\"perSN\":\"" + perSN + "\",\"graSN\":\"" + graSN + "\",\"terSN\":\"" + terSN + "\",\"dapSN\":\"" + dapSN + "\",\"txtData\":\"" + txtData + "\",\"indCode\":\"" + indCode + "\",\"filePath\":\"" + filePath + "\",\"yeaName\":\"" + yeaName + "\",\"Token\":\"" + Token + "\",\"schSN\":\"" + schSN + "\",\"schName\":\"" + schName + "\",\"teaSN\":\"" + teaSN + "\",\"parentIndName\":\"" + parentIndName + "\",\"parentIndCode\":\"" + parentIndCode + "\",\"source\":\"" + source + "\",\"RoleToken\":\"" + RoleToken + "\"}";
+                    var postData = "method=POST&interface=AssessPerformance/SaveAssessPerformance&data={\"stuInfo\":\"" + stuInfo + "\",\"graKindSN\":\"" + graKindSN + "\",\"perSN\":\"" + perSN + "\",\"graSN\":\"" + graSN + "\",\"terSN\":\"" + terSN + "\",\"dapSN\":\"" + dapSN + "\",\"txtData\":\"" + txtData + "\",\"indCode\":\"" + indCode + "\",\"filePath\":\"" + filePath + "\",\"yeaName\":\"" + yeaName + "\",\"Token\":\"" + Token + "\",\"schSN\":\"" + schSN + "\",\"schName\":\"" + schName + "\",\"teaSN\":\"" + teaSN + "\",\"parentIndName\":\"" + parentIndName + "\",\"parentIndCode\":\"" + parentIndCode + "\",\"source\":\"" + source + "\",\"RoleToken\":\"" + RoleToken + "\",\"dapState\":\"" + dapState + "\"}";
                     fetch(REQUEST_API, {
                         method: 'POST',
                         mode: 'cors',
@@ -51774,6 +51774,100 @@ var IndexComponent = exports.IndexComponent = function (_React$Component) {
                         sessionStorage.removeItem("level3IndCode");
                         sessionStorage.setItem("dateTime", _date2.default);
                     }); //
+                }
+            }]);
+        }
+    }, {
+        key: "submitRecord",
+        value: function submitRecord() {
+            //判断提交条件是否完全
+            if (sessionStorage.getItem("studentInfo") == null || sessionStorage.getItem("studentInfo" == "undefined")) {
+                alert("请选择学生");
+                return false;
+            }
+            if (sessionStorage.getItem("level3IndCode") == null || sessionStorage.getItem("level3IndCode" == "undefined")) {
+                alert("请选择考核项");
+                return false;
+            }
+            //确定是否保存
+            alert('确定', '提交吗？', [{ text: '取消', onPress: function onPress() {
+                    return console.log('cancel');
+                } }, { text: '提交', onPress: function onPress() {
+                    var graKindSN = sessionStorage.getItem("getClassGraKindSN");
+                    var perSN = sessionStorage.getItem("getClassPerSN");
+                    var graSN = sessionStorage.getItem("getClassGraSN");
+                    var terSN = sessionStorage.getItem("getClassTerSN");
+                    var dapSN = "";
+                    var txtData = sessionStorage.getItem("dateTime");
+                    var indCode = sessionStorage.getItem("level3IndCode");
+                    var filePath = "";
+                    var yeaName = "";
+                    var Token = sessionStorage.getItem("Token");
+                    var schSN = sessionStorage.getItem("schSn");
+                    var schName = "";
+                    var teaSN = sessionStorage.getItem("rolTeaSn");
+                    var parentIndName = sessionStorage.getItem("level2IndName");
+                    var parentIndCode = sessionStorage.getItem("level2IndCode");
+                    var RoleToken = sessionStorage.getItem("rolToken");
+                    var source = "2";
+                    var stuInfo = "";
+                    var dapState = "2";
+                    //分解学生信息
+                    _jquery2.default.each(JSON.parse(sessionStorage.getItem("studentInfo")), function (index, object) {
+                        stuInfo += object.ClaSn + "⊙" + object.ClaName + "⊙" + object.StuName + "⊙" + object.StuId + "⊙" + object.BasClaSn;
+                        if (index != JSON.parse(sessionStorage.getItem("studentInfo")).length - 1) {
+                            stuInfo += "∮";
+                        }
+                    });
+                    //语音二进制流
+                    var reader = null;
+                    _jquery2.default.each(voiceRecords, function (index, object) {
+                        plus.io.resolveLocalFileSystemURL(object.props.entry, function (entry) {
+                            entry.file(function (file) {
+                                reader = new plus.io.FileReader();
+                                reader.onloadend = function (e) {
+                                    plus.console.log("Read success");
+                                    // Get data
+                                    //plus.console.log(e.target.result);
+                                    //alert(e.target.result);
+                                    sessionStorage.setItem("voiceBase64", e.target.result);
+                                };
+                                reader.readAsDataURL(file);
+                            }, function (e) {
+                                alert(e.message);
+                            });
+                        }, function (e) {
+                            alert(e);
+                        });
+                    });
+
+                    console.log(sessionStorage.getItem("voiceBase64"));
+                    var postData = "method=POST&interface=AssessPerformance/SaveAssessPerformance&data={\"stuInfo\":\"" + stuInfo + "\",\"graKindSN\":\"" + graKindSN + "\",\"perSN\":\"" + perSN + "\",\"graSN\":\"" + graSN + "\",\"terSN\":\"" + terSN + "\",\"dapSN\":\"" + dapSN + "\",\"txtData\":\"" + txtData + "\",\"indCode\":\"" + indCode + "\",\"filePath\":\"" + filePath + "\",\"yeaName\":\"" + yeaName + "\",\"Token\":\"" + Token + "\",\"schSN\":\"" + schSN + "\",\"schName\":\"" + schName + "\",\"teaSN\":\"" + teaSN + "\",\"parentIndName\":\"" + parentIndName + "\",\"parentIndCode\":\"" + parentIndCode + "\",\"source\":\"" + source + "\",\"RoleToken\":\"" + RoleToken + "\",\"dapState\":\"" + dapState + "\"}";
+                    fetch(REQUEST_API, {
+                        method: 'POST',
+                        mode: 'cors',
+                        //credentials: 'include',
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        headers: {
+                            "Accept": "application/json,text/javascript,*/*",
+                            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+                        },
+                        body: postData
+                    }).then(function (res) {
+                        if (res.status != 200) {
+                            alert("服务器出错");
+                        }
+                        return res;
+                    }).then(function (res) {
+                        return res.json();
+                    }).then(function (res) {
+                        //console.log(res.Msg);
+                        sessionStorage.removeItem("studentInfo");
+                        sessionStorage.removeItem("level3IndCode");
+                        sessionStorage.setItem("dateTime", _date2.default);
+                    });
                 }
             }]);
         }
@@ -52197,7 +52291,7 @@ var IndexComponent = exports.IndexComponent = function (_React$Component) {
                                 { className: "itemMarginLeft", style: { flexGrow: 1 } },
                                 _react2.default.createElement(
                                     _button2.default,
-                                    { type: "primary" },
+                                    { type: "primary", onClick: this.submitRecord.bind(this) },
                                     "\u63D0\u4EA4"
                                 )
                             )
@@ -52716,7 +52810,7 @@ var FunctionRecord = function (_React$Component2) {
     return FunctionRecord;
 }(_react2.default.Component);
 
-var dapState = 0;
+var dapState = "0";
 
 var RecordContent = function (_React$Component3) {
     _inherits(RecordContent, _React$Component3);
@@ -52738,24 +52832,22 @@ var RecordContent = function (_React$Component3) {
             var _this4 = this;
 
             if (this.props.match.url == "/record" || this.props.match.url == "/record/addRecord" || this.props.match.url == "/record/allRecord") {
-                dapState = 1;
+                dapState = "1";
             } else if (this.props.match.url == "/record/waitRecord" || this.props.match.url == "/record/waitRecord/addRecord" || this.props.match.url == "/record/waitRecord/allRecord") {
-                dapState = 2;
+                dapState = "2";
             } else if (this.props.match.url == "/record/passRecord" || this.props.match.url == "/record/passRecord/addRecord" || this.props.match.url == "/record/passRecord/allRecord") {
-                dapState = 3;
+                dapState = "3";
             } else if (this.props.match.url == "/record/refuseRecord" || this.props.match.url == "/record/refuseRecord/addRecord" || this.props.match.url == "/record/refuseRecord/allRecord") {
-                dapState = 4;
+                dapState = "4";
             }
 
             var createUser = sessionStorage.getItem("rolTeaSn");
             var schSN = sessionStorage.getItem("schSn");
             var Token = sessionStorage.getItem("Token");
-            var dapState = dapState;
-            var graKindSN = sessionStorage.getItem("getClassGraKindSN");
-            var graSN = sessionStorage.getItem("getClassGraSN");
-            var perSN = sessionStorage.getItem("getClassPerSN");
+            var dapState1 = dapState;
             var terSN = sessionStorage.getItem("getClassTerSN");
-            var postData = "method=POST&interface=AssessPerformance/GetAssessPerformanceTable&data={\"createUser\":\"" + createUser + "\",\"graKindSN\":\"" + graKindSN + "\",\"perSN\":\"" + perSN + "\",\"graSN\":\"" + graSN + "\",\"terSN\":\"" + terSN + "\",\"dapState\":\"" + dapState + "\",\"Token\":\"" + Token + "\",\"schSN\":\"" + schSN + "\"}";
+            var postData = "method=POST&interface=AssessPerformance/GetAssessPerformanceTable&data={\"createUser\":\"" + createUser + "\",\"terSN\":\"" + terSN + "\",\"dapState\":\"" + dapState1 + "\",\"Token\":\"" + Token + "\",\"schSN\":\"" + schSN + "\"}";
+            console.log(postData);
             fetch(REQUEST_API, {
                 method: 'POST',
                 mode: 'cors',
@@ -52776,7 +52868,7 @@ var RecordContent = function (_React$Component3) {
             }).then(function (res) {
                 return res.json();
             }).then(function (res) {
-                console.log(res.Msg);
+                console.log(JSON.stringify(res.Msg));
                 if (_typeof(res.Msg) == "object") {
                     var level = [];
                     if (_this4.props.match.url == "/record" || _this4.props.match.url == "/record/waitRecord" || _this4.props.match.url == "/record/passRecord" || _this4.props.match.url == "/record/refuseRecord") {

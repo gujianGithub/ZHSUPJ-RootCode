@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import {BrowserRouter as Router,Route,Link,NavLink} from "react-router-dom";
 import {Flex,Icon} from "antd-mobile";
 import {browserHistory} from "./history";
@@ -159,11 +159,8 @@ class RecordContent extends React.Component{
         let schSN = sessionStorage.getItem("schSn");
         let Token = sessionStorage.getItem("Token");
         let dapState1 = dapState;
-        let graKindSN = sessionStorage.getItem("getClassGraKindSN");
-        let graSN = sessionStorage.getItem("getClassGraSN");
-        let perSN = sessionStorage.getItem("getClassPerSN");
         let terSN = sessionStorage.getItem("getClassTerSN");
-        let postData = "method=POST&interface=AssessPerformance/GetAssessPerformanceTable&data={\"createUser\":\""+createUser+"\",\"graKindSN\":\"" + graKindSN + "\",\"perSN\":\"" + perSN + "\",\"graSN\":\""+graSN+"\",\"terSN\":\""+terSN+"\",\"dapState\":\""+dapState1+"\",\"Token\":\""+Token+"\",\"schSN\":\""+schSN+"\"}"
+        let postData = "method=POST&interface=AssessPerformance/GetAssessPerformanceTable&data={\"createUser\":\""+createUser+"\",\"terSN\":\""+terSN+"\",\"dapState\":\""+dapState1+"\",\"Token\":\""+Token+"\",\"schSN\":\""+schSN+"\"}"
         console.log(postData);
         fetch(REQUEST_API, {
             method: 'POST',
