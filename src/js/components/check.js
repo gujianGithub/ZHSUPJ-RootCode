@@ -45,7 +45,7 @@ export class CheckComponent extends React.Component{
                 return res;
             }
         ).then(res => res.json()).then(res=>{
-            sessionStorage.setItem("assessIndicatorTree",JSON.stringify(res.Msg));
+            sessionStorage.setItem("assessIndicatorTree2",JSON.stringify(res.Msg));
             //console.log(JSON.stringify(res.Msg));
             let level =[];
             $.each(res.Msg,function(index,object){
@@ -64,7 +64,7 @@ export class CheckComponent extends React.Component{
     }
     getCheck(){
         let level =[];
-        $.each(JSON.parse(sessionStorage.getItem("assessIndicatorTree")),function(index1,object1){
+        $.each(JSON.parse(sessionStorage.getItem("assessIndicatorTree2")),function(index1,object1){
                     if(object1.indCode == sessionStorage.getItem("level2IndCode")){
                         $.each(object1.children,function(index2,object2){
                             level.push({value:index2,label:object2.indName,indCode:object2.indCode});

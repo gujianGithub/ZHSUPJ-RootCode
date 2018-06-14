@@ -68,7 +68,7 @@ export class GuideComponent extends React.Component{
                 return res;
             }
         ).then(res => res.json()).then(res=>{
-            //console.log(JSON.stringify(res.Msg));
+           //console.log(JSON.stringify(res.Msg));
             sessionStorage.setItem("graKindGrade",JSON.stringify(res.Msg));
             let graKindRole = "";
             graKindRole += "[";
@@ -120,7 +120,7 @@ export class GuideComponent extends React.Component{
                 let indicatorIcon = indicatorIcon1;
                 this.setState({totalPage:Math.ceil(res.Msg.length/4)});
             sessionStorage.setItem("assessIndicatorTree",JSON.stringify(res.Msg));
-          //  console.log(sessionStorage.getItem("assessIndicatorTree"));
+           // console.log(sessionStorage.getItem("assessIndicatorTree"));
                 $.each(res.Msg,function(index,object){
                     if(index<=3){
                     switch(time){

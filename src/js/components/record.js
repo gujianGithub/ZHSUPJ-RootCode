@@ -159,9 +159,73 @@ class RecordContent extends React.Component{
         let schSN = sessionStorage.getItem("schSn");
         let Token = sessionStorage.getItem("Token");
         let dapState1 = dapState;
-        let terSN = sessionStorage.getItem("getClassTerSN");
-        let postData = "method=POST&interface=AssessPerformance/GetAssessPerformanceTable&data={\"createUser\":\""+createUser+"\",\"terSN\":\""+terSN+"\",\"dapState\":\""+dapState1+"\",\"Token\":\""+Token+"\",\"schSN\":\""+schSN+"\"}"
-        console.log(postData);
+        var graKindSN =[];
+        var perSN =[];
+        var perSNArr =[];
+        var graSN=[];
+       // let terSN = sessionStorage.getItem("getClassTerSN");
+        //console.log(sessionStorage.getItem("currentIndicatorCode"));
+        console.log(graKindSN);
+        $.each(JSON.parse(sessionStorage.getItem("assessIndicatorTree")),function(index,object){
+            if(object.indCode == sessionStorage.getItem("currentIndicatorCode")){
+                sessionStorage.setItem("opterateTree",JSON.stringify(object.graKind));
+                $.each(object.graKind,function(index2,object2){
+                    if(graKindSN.indexOf(object2.graKindSN) == -1){
+                        graKindSN.push(object2.graKindSN);
+                    }
+                })
+            }
+            
+        })
+        console.log(graKindSN);
+        var graKindInfo = "[";
+        for(var i=0;i<graKindSN.length;i++){
+            $.each(JSON.parse(sessionStorage.getItem("opterateTree")),function(index,object){
+                //获取学界
+                if(object.graKindSN == graKindSN[i]){
+                    perSN.push(object.perSN);
+                }
+                //console.log(perSN.toString());
+                //获取年级
+                if(object.graKindSN == graKindSN[i]){
+                    graSN.push(object.graSN);
+                }
+            })
+       
+            graKindInfo+="{\"graKindSN\":\""+graKindSN[i]+"\",";
+            graKindInfo+="\"perInfo\":[";
+            for(var j=0;j<perSN.length;j++){
+                graKindInfo+="{\"perSN\":\""+perSN[j]+"\",";
+                graKindInfo+="\"graInfo\":[";
+                graKindInfo+="{\"graSN\":\""+graSN[j]+"\"}";
+                graKindInfo+="]";
+                graKindInfo+="}";
+                if(j!=perSN.length-1){
+                    graKindInfo+=",";
+                }
+            }
+            graKindInfo+="]";
+            graKindInfo+="}";
+            if(i!=graKindSN.length-1){
+                graKindInfo+=",";
+            }
+        }
+        graKindInfo+="]";
+        var claSNArr ="";
+        var graKindGrade = JSON.parse(sessionStorage.getItem("graKindGrade"));
+        
+        $.each(graKindGrade,function(index,object){
+            $.each(object.perInfo,function(index2,object2){
+                $.each(object2.claInfo,function(index3,object3){
+                    claSNArr+=object3.claSN+",";
+                })
+            })
+        })
+        claSNArr = claSNArr.substr(0,claSNArr.length-1);
+        var startDate ="";
+        var endDate = "";
+        let postData = "method=POST&interface=AssessPerformance/GetAssessPerformanceTable4&data={\"createUser\":\""+createUser+"\",\"dapState\":\""+dapState1+"\",\"Token\":\""+Token+"\",\"schSN\":\""+schSN+"\",\"graKindInfo\":"+graKindInfo+",\"claSN\":\""+claSNArr+"\",\"startDate\":\""+startDate+"\",\"endDate\":\""+endDate+"\"}"
+        //console.log(postData);
         fetch(REQUEST_API, {
             method: 'POST',
             mode: 'cors',   
@@ -181,7 +245,7 @@ class RecordContent extends React.Component{
                 return res;
             }
         ).then(res => res.json()).then(res => {
-            console.log(JSON.stringify(res.Msg));
+          //  console.log(JSON.stringify(res.Msg));
                 if(typeof(res.Msg)=="object"){
                     let level = [];
                 if(this.props.match.url == "/record" || this.props.match.url == "/record/waitRecord"||this.props.match.url == "/record/passRecord"||this.props.match.url == "/record/refuseRecord"){

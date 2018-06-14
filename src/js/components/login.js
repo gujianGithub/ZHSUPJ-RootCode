@@ -42,6 +42,7 @@ export class LoginComponent extends React.Component {
                 return res;
             }
         ).then(res => res.json()).then(res => {
+              //  console.log(JSON.stringify(res));
                 if (res.Msg == "") {
                     sessionStorage.setItem("Token",res.Token);
                     sessionStorage.setItem("schSn",res.Data.SchSn);

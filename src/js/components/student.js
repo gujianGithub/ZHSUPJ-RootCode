@@ -161,7 +161,6 @@ export class StudentComponent extends React.Component{
     }
     selectAllStudents(e)
     {
-        
         if(this.state.selectStateChange == "全选"){
             this.setState({selectStateChange:"全不选"},()=>{
                 $(".studentCss10").addClass("clickedColor");
